@@ -6,7 +6,7 @@
 /*   By: ertiz <ertiz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:48:54 by tpiras            #+#    #+#             */
-/*   Updated: 2023/09/21 15:43:58 by ertiz            ###   ########.fr       */
+/*   Updated: 2023/09/21 16:05:28 by ertiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,19 @@ void	analizer(t_shell *mini, char **envp)
 	{
 		if (ft_strncmp((*mini->high)->str, "$?", 2) == 0)
 		{
-			(*mini->high)->str = ft_strtrim((*mini->high)->str, "$?");
 			if ((*mini->high)->str && (*mini->high)->str[2] != ' ' && mini->flag_status != 0)
-				printf("%d%s: command not found\n", WEXITSTATUS(g_exit_status), (*mini->high)->str);
+			{
+				(*mini->high)->str = ft_strtrim((*mini->high)->str, "$?");
+				printf("%d%s: command not found\n", g_exit_status, (*mini->high)->str);
+			}
 			else
-				printf("%d: command not found\n", WEXITSTATUS(g_exit_status));
+				printf("%d,%d: command not found\n", g_exit_status, g_exit_status);
 		}
 		else
 			printf("command not found\n");
-		mini->flag_status = 127;
+		g_exit_status = 127;
 	}
 	if (ft_strcmp((*mini->high)->str, "expr"))
-	{
 		echo_replacer(mini, (*mini->high));
-	}
 	free_matrix(temp);
 }

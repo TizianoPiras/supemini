@@ -6,7 +6,7 @@
 /*   By: ertiz <ertiz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:47:02 by tpiras            #+#    #+#             */
-/*   Updated: 2023/09/21 13:29:09 by ertiz            ###   ########.fr       */
+/*   Updated: 2023/09/21 16:08:36 by ertiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*expanding_d(t_shell *mini, char *s)
 		if (mini->flag_status != 0)
 		{
 			en = ft_itoa(mini->flag_status);
-			mini->flag_status = 0;
+			g_exit_status = 0;
 		}
 		else
 			en = ft_itoa(WEXITSTATUS(g_exit_status));
