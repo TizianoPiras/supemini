@@ -6,7 +6,7 @@
 /*   By: ertiz <ertiz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:47:02 by tpiras            #+#    #+#             */
-/*   Updated: 2023/09/20 17:13:56 by ertiz            ###   ########.fr       */
+/*   Updated: 2023/09/21 13:29:09 by ertiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,15 @@ void	replacer(t_shell *mini)
 			&& ft_strcmp(node->command, "unset") != 0
 			&& ft_strcmp(node->command, "echo") != 0)
 		{
-			if (ft_strcmp(node->command, "expr") == 0)
-			 en = echo_expanding_d(mini, node->argument);
-			else
-				en = expanding_d(mini, node->argument);
+			en = expanding_d(mini, node->argument);
 			if (en != NULL)
 			{
 				node->argument = ft_strdup(en);
 				break ;
 			}
 		}
+		//else if (ft_strcmp(node->argument, "expr") == 0)
+		//	en = echo_expanding_d(mini, node->argument);
 		node = node->next;
 	}
 }
@@ -87,6 +86,7 @@ char	*expanding_d(t_shell *mini, char *s)
 		if (mini->flag_status != 0)
 		{
 			en = ft_itoa(mini->flag_status);
+			mini->flag_status = 0;
 		}
 		else
 			en = ft_itoa(WEXITSTATUS(g_exit_status));

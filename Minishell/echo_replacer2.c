@@ -6,7 +6,7 @@
 /*   By: ertiz <ertiz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:45:47 by tpiras            #+#    #+#             */
-/*   Updated: 2023/09/20 17:14:15 by ertiz            ###   ########.fr       */
+/*   Updated: 2023/09/21 15:41:38 by ertiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*echo_expanding_d(t_shell *mini, char *s)
 		}
 		else
 			en = ft_itoa(WEXITSTATUS(g_exit_status));
+		//mini->flag_status = 10;
 	}
 	if (en == NULL)
 	{

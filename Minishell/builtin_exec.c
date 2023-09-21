@@ -6,7 +6,7 @@
 /*   By: ertiz <ertiz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:45:24 by tpiras            #+#    #+#             */
-/*   Updated: 2023/09/11 16:59:42 by ertiz            ###   ########.fr       */
+/*   Updated: 2023/09/21 14:42:38 by ertiz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ void	command_pwd(t_shell *mini, t_args *current)
 {
 	char	pwd_path[1024];
 
-	if (current->argument != NULL)
-	{
-		printf("pwd: too many arguments\n");
-		mini->flag_status = 1;
-		return ;
-	}
 	if (getcwd(pwd_path, sizeof(pwd_path)) != NULL)
 		printf("%s\n", pwd_path);
+	else
+	{
+		printf("pwd: error\n");
+		mini->flag_status = 1;
+	}
 }
 
 static void	create_path(t_shell *mini, char *path)
